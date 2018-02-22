@@ -23,7 +23,15 @@ export default class Gallery extends React.Component {
         <h1>Photo Gallery</h1>
         <p>There are <strong>{this.state.images.length}</strong> photos in this gallery</p>
 
-          <div className="photo-gallery">
+          <div className="selected">
+            {console.log(this.state.images)}
+            {this.state.images.map((image, index) => {
+              return <div key={index}><Photo image={image} /></div>
+            })
+            }
+          </div>          
+
+          <div className="slider-nav">
             {console.log(this.state.images)}
             {this.state.images.map((image, index) => {
               return <div key={index}><Photo image={image} /></div>

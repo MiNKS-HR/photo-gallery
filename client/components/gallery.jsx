@@ -15,56 +15,71 @@ export default class Gallery extends React.Component {
                'https://robohash.org/maioresnatussuscipit.jpg?size=300x400&set=set1'
               ]
     };
+    this.slider = this.slider.bind(this);
+  }
+
+  slider() {
+    $(document).ready(function(){
+      $('.selected').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      dots: false,
+      asNavFor: '.slider-nav'
+      });
+
+      $('.slider-nav').slick({
+      asNavFor: '.selected',
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      dots: true,
+      centerMode: true,
+      focusOnSelect: true,
+      variableWidth: true,
+      infinite: false
+      });
+    });
   }
 
   render(){
     return (
       <div>
-        <h1>Photo Gallery</h1>
-        <p>There are <strong>{this.state.images.length}</strong> photos in this gallery</p>
 
-          <img src={this.state.images[0]} data-toggle="modal" data-target="#exampleModal" />
+        <img src={this.state.images[0]} data-toggle="modal" data-target="#photo_modal" />
+        <p className="num-photos">There are <strong>{this.state.images.length}</strong> photos in this gallery</p>
 
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
 
-                    <div className="selected">
-                      {console.log(this.state.images)}
-                      {this.state.images.map((image, index) => {
-                        return <div key={index}>
-                                <Photo image={image} />
-                                <p>Image <strong>{index + 1}</strong> out of {this.state.images.length}</p>
-                        </div>
-                      })
-                      }
-                    </div>          
+        <div className="modal fade" id="photo_modal" tabIndex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-body">
 
-                    <div className="slider-nav">
-                      {console.log(this.state.images)}
-                      {this.state.images.map((image, index) => {
-                        return <div key={index}><Photo image={image} /></div>
-                      })
-                      }
-                    </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                  <div className="selected">
+                    {this.state.images.map((image, index) => {
+                      return <div key={index}>
+                              <Photo image={image} />
+                              <p>Image <strong>{index + 1}</strong> out of {this.state.images.length}</p>
+                      </div>
+                    })
+                    }
+                  </div>          
+
+                  <div className="slider-nav">
+                    {this.state.images.map((image, index) => {
+                      return <div key={index}><Photo image={image} /></div>
+                    })
+                    }
+                  </div>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
+        </div>
 
       </div>
     )
   }
 };
-
-/* 
-          {console.log(this.state.images)}
-          {this.state.images.map((image, index) => {
-            return <Photo image={image} key={index} />
-          })
-          }
-*/

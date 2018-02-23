@@ -16,6 +16,7 @@ export default class Gallery extends React.Component {
               ]
     };
     this.slider = this.slider.bind(this);
+    this.hasImages = this.hasImages.bind(this);
   }
 
   slider() {
@@ -42,13 +43,16 @@ export default class Gallery extends React.Component {
     });
   }
 
-  render(){
-    return (
+  hasImages(prop) {
+    if (prop.length === 0) {
+      return <img src="img/no-photo.jpg" />
+    } else if (prop.length === 1) {
+      return <img src={prop[0]} />
+    } else {
+      return (
       <div>
-
         <img src={this.state.images[0]} data-toggle="modal" data-target="#photo_modal" />
-        <p className="num-photos">There are <strong>{this.state.images.length}</strong> photos in this gallery</p>
-
+        <p className="num-photos">There are <strong>{prop.length}</strong> photos in this gallery.</p>
 
         <div className="modal fade" id="photo_modal" tabIndex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
           <div className="modal-dialog" role="document">
@@ -56,17 +60,17 @@ export default class Gallery extends React.Component {
               <div className="modal-body">
 
                   <div className="selected">
-                    {this.state.images.map((image, index) => {
+                    {prop.map((image, index) => {
                       return <div key={index}>
                               <Photo image={image} />
-                              <p>Image <strong>{index + 1}</strong> out of {this.state.images.length}</p>
-                      </div>
+                              <p>Image <strong>{index + 1}</strong> out of {prop.length}</p>
+                             </div>
                     })
                     }
                   </div>          
 
                   <div className="slider-nav">
-                    {this.state.images.map((image, index) => {
+                    {prop.map((image, index) => {
                       return <div key={index}><Photo image={image} /></div>
                     })
                     }
@@ -78,7 +82,15 @@ export default class Gallery extends React.Component {
             </div>
           </div>
         </div>
+      </div>
+      )
+    }
+  }
 
+  render(){
+    return (
+      <div>
+        {this.hasImages(this.state.images)}
       </div>
     )
   }

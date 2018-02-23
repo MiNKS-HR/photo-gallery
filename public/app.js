@@ -615,10 +615,36 @@ var Gallery = function (_React$Component) {
     _this.state = {
       images: ['https://robohash.org/perferendiscupiditateminima.png?size=300x400&set=set1', 'https://robohash.org/eosquisquia.bmp?size=300x400&set=set1', 'https://robohash.org/doloreofficiispraesentium.jpg?size=300x400&set=set1', 'https://robohash.org/voluptatibusidsaepe.png?size=300x400&set=set1', 'https://robohash.org/ullamcorruptivoluptatibus.png?size=300x400&set=set1', 'https://robohash.org/voluptatibusetprovident.jpg?size=300x400&set=set1', 'https://robohash.org/maioresnatussuscipit.jpg?size=300x400&set=set1']
     };
+    _this.slider = _this.slider.bind(_this);
     return _this;
   }
 
   _createClass(Gallery, [{
+    key: 'slider',
+    value: function slider() {
+      $(document).ready(function () {
+        $('.selected').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          fade: true,
+          dots: false,
+          asNavFor: '.slider-nav'
+        });
+
+        $('.slider-nav').slick({
+          asNavFor: '.selected',
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          dots: true,
+          centerMode: true,
+          focusOnSelect: true,
+          variableWidth: true,
+          infinite: false
+        });
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -626,14 +652,10 @@ var Gallery = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(
-          'h1',
-          null,
-          'Photo Gallery'
-        ),
+        _react2.default.createElement('img', { src: this.state.images[0], 'data-toggle': 'modal', 'data-target': '#photo_modal' }),
         _react2.default.createElement(
           'p',
-          null,
+          { className: 'num-photos' },
           'There are ',
           _react2.default.createElement(
             'strong',
@@ -642,23 +664,21 @@ var Gallery = function (_React$Component) {
           ),
           ' photos in this gallery'
         ),
-        _react2.default.createElement('img', { src: this.state.images[0], 'data-toggle': 'modal', 'data-target': '#exampleModal' }),
         _react2.default.createElement(
           'div',
-          { 'class': 'modal fade', id: 'exampleModal', tabindex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModal', 'aria-hidden': 'true' },
+          { className: 'modal fade', id: 'photo_modal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModal', 'aria-hidden': 'true' },
           _react2.default.createElement(
             'div',
-            { 'class': 'modal-dialog', role: 'document' },
+            { className: 'modal-dialog', role: 'document' },
             _react2.default.createElement(
               'div',
-              { 'class': 'modal-content' },
+              { className: 'modal-content' },
               _react2.default.createElement(
                 'div',
-                { 'class': 'modal-body' },
+                { className: 'modal-body' },
                 _react2.default.createElement(
                   'div',
                   { className: 'selected' },
-                  console.log(this.state.images),
                   this.state.images.map(function (image, index) {
                     return _react2.default.createElement(
                       'div',
@@ -682,7 +702,6 @@ var Gallery = function (_React$Component) {
                 _react2.default.createElement(
                   'div',
                   { className: 'slider-nav' },
-                  console.log(this.state.images),
                   this.state.images.map(function (image, index) {
                     return _react2.default.createElement(
                       'div',
@@ -694,10 +713,10 @@ var Gallery = function (_React$Component) {
               ),
               _react2.default.createElement(
                 'div',
-                { 'class': 'modal-footer' },
+                { className: 'modal-footer' },
                 _react2.default.createElement(
                   'button',
-                  { type: 'button', 'class': 'btn btn-secondary', 'data-dismiss': 'modal' },
+                  { type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
                   'Close'
                 )
               )
@@ -713,14 +732,6 @@ var Gallery = function (_React$Component) {
 
 exports.default = Gallery;
 ;
-
-/* 
-          {console.log(this.state.images)}
-          {this.state.images.map((image, index) => {
-            return <Photo image={image} key={index} />
-          })
-          }
-*/
 
 /***/ }),
 /* 9 */

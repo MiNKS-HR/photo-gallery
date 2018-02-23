@@ -616,6 +616,7 @@ var Gallery = function (_React$Component) {
       images: ['https://robohash.org/perferendiscupiditateminima.png?size=300x400&set=set1', 'https://robohash.org/eosquisquia.bmp?size=300x400&set=set1', 'https://robohash.org/doloreofficiispraesentium.jpg?size=300x400&set=set1', 'https://robohash.org/voluptatibusidsaepe.png?size=300x400&set=set1', 'https://robohash.org/ullamcorruptivoluptatibus.png?size=300x400&set=set1', 'https://robohash.org/voluptatibusetprovident.jpg?size=300x400&set=set1', 'https://robohash.org/maioresnatussuscipit.jpg?size=300x400&set=set1']
     };
     _this.slider = _this.slider.bind(_this);
+    _this.hasImages = _this.hasImages.bind(_this);
     return _this;
   }
 
@@ -645,84 +646,97 @@ var Gallery = function (_React$Component) {
       });
     }
   }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement('img', { src: this.state.images[0], 'data-toggle': 'modal', 'data-target': '#photo_modal' }),
-        _react2.default.createElement(
-          'p',
-          { className: 'num-photos' },
-          'There are ',
-          _react2.default.createElement(
-            'strong',
-            null,
-            this.state.images.length
-          ),
-          ' photos in this gallery'
-        ),
-        _react2.default.createElement(
+    key: 'hasImages',
+    value: function hasImages(prop) {
+      if (prop.length === 0) {
+        return _react2.default.createElement('img', { src: 'img/no-photo.jpg' });
+      } else if (prop.length === 1) {
+        return _react2.default.createElement('img', { src: prop[0] });
+      } else {
+        return _react2.default.createElement(
           'div',
-          { className: 'modal fade', id: 'photo_modal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModal', 'aria-hidden': 'true' },
+          null,
+          _react2.default.createElement('img', { src: this.state.images[0], 'data-toggle': 'modal', 'data-target': '#photo_modal' }),
+          _react2.default.createElement(
+            'p',
+            { className: 'num-photos' },
+            'There are ',
+            _react2.default.createElement(
+              'strong',
+              null,
+              prop.length
+            ),
+            ' photos in this gallery.'
+          ),
           _react2.default.createElement(
             'div',
-            { className: 'modal-dialog', role: 'document' },
+            { className: 'modal fade', id: 'photo_modal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModal', 'aria-hidden': 'true' },
             _react2.default.createElement(
               'div',
-              { className: 'modal-content' },
+              { className: 'modal-dialog', role: 'document' },
               _react2.default.createElement(
                 'div',
-                { className: 'modal-body' },
+                { className: 'modal-content' },
                 _react2.default.createElement(
                   'div',
-                  { className: 'selected' },
-                  this.state.images.map(function (image, index) {
-                    return _react2.default.createElement(
-                      'div',
-                      { key: index },
-                      _react2.default.createElement(_photo2.default, { image: image }),
-                      _react2.default.createElement(
-                        'p',
-                        null,
-                        'Image ',
+                  { className: 'modal-body' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'selected' },
+                    prop.map(function (image, index) {
+                      return _react2.default.createElement(
+                        'div',
+                        { key: index },
+                        _react2.default.createElement(_photo2.default, { image: image }),
                         _react2.default.createElement(
-                          'strong',
+                          'p',
                           null,
-                          index + 1
-                        ),
-                        ' out of ',
-                        _this2.state.images.length
-                      )
-                    );
-                  })
+                          'Image ',
+                          _react2.default.createElement(
+                            'strong',
+                            null,
+                            index + 1
+                          ),
+                          ' out of ',
+                          prop.length
+                        )
+                      );
+                    })
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'slider-nav' },
+                    prop.map(function (image, index) {
+                      return _react2.default.createElement(
+                        'div',
+                        { key: index },
+                        _react2.default.createElement(_photo2.default, { image: image })
+                      );
+                    })
+                  )
                 ),
                 _react2.default.createElement(
                   'div',
-                  { className: 'slider-nav' },
-                  this.state.images.map(function (image, index) {
-                    return _react2.default.createElement(
-                      'div',
-                      { key: index },
-                      _react2.default.createElement(_photo2.default, { image: image })
-                    );
-                  })
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'modal-footer' },
-                _react2.default.createElement(
-                  'button',
-                  { type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
-                  'Close'
+                  { className: 'modal-footer' },
+                  _react2.default.createElement(
+                    'button',
+                    { type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
+                    'Close'
+                  )
                 )
               )
             )
           )
-        )
+        );
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        this.hasImages(this.state.images)
       );
     }
   }]);
@@ -2249,7 +2263,12 @@ var Photo = function (_React$Component) {
   _createClass(Photo, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('img', { src: this.props.image });
+      return _react2.default.createElement(
+        'div',
+        null,
+        console.log('images!', this.props.image),
+        _react2.default.createElement('img', { src: this.props.image })
+      );
     }
   }]);
 

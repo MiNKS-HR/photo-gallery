@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<!--   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
- -->  <link rel="stylesheet" type="text/css" href="/styles/slick-theme.css">
+<!--   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/> -->  
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/styles/slick-theme.css">
   <link rel="stylesheet" type="text/css" href="/styles/slick.css">
   <link rel="stylesheet" type="text/css" href="/styles/styles.css">
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.8.0/slick.css"/>
   <title>Gallery</title>
 </head>
 <body>
+
   <div id="gallery"></div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -17,11 +19,57 @@
   <!-- <script type="text/javascript" src="https://unpkg.com/react-slick@0.13.6/dist/react-slick.min.js"></script> -->
   <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="http://localhost:3004/app.js"></script>
 
 
   <script>
     $(document).ready(function(){
+$('.selected').slick({
+slidesToShow: 1,
+slidesToScroll: 1,
+arrows: false,
+fade: true,
+asNavFor: '.slider-nav'
+});
+$('.slider-nav').slick({
+asNavFor: '.selected',
+slidesToShow: 3,
+slidesToScroll: 1,
+
+dots: true,
+centerMode: true,
+focusOnSelect: true,
+variableWidth: true,
+infinite: false,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+]
+});
+
+
+
       $('.photo-gallery').slick({
         infinite: false,
         arrows: true,

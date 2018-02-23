@@ -621,6 +621,8 @@ var Gallery = function (_React$Component) {
   _createClass(Gallery, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
         'div',
         null,
@@ -640,17 +642,67 @@ var Gallery = function (_React$Component) {
           ),
           ' photos in this gallery'
         ),
+        _react2.default.createElement('img', { src: this.state.images[0], 'data-toggle': 'modal', 'data-target': '#exampleModal' }),
         _react2.default.createElement(
           'div',
-          { className: 'photo-gallery' },
-          console.log(this.state.images),
-          this.state.images.map(function (image, index) {
-            return _react2.default.createElement(
+          { 'class': 'modal fade', id: 'exampleModal', tabindex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModal', 'aria-hidden': 'true' },
+          _react2.default.createElement(
+            'div',
+            { 'class': 'modal-dialog', role: 'document' },
+            _react2.default.createElement(
               'div',
-              { key: index },
-              _react2.default.createElement(_photo2.default, { image: image })
-            );
-          })
+              { 'class': 'modal-content' },
+              _react2.default.createElement(
+                'div',
+                { 'class': 'modal-body' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'selected' },
+                  console.log(this.state.images),
+                  this.state.images.map(function (image, index) {
+                    return _react2.default.createElement(
+                      'div',
+                      { key: index },
+                      _react2.default.createElement(_photo2.default, { image: image }),
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'Image ',
+                        _react2.default.createElement(
+                          'strong',
+                          null,
+                          index + 1
+                        ),
+                        ' out of ',
+                        _this2.state.images.length
+                      )
+                    );
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'slider-nav' },
+                  console.log(this.state.images),
+                  this.state.images.map(function (image, index) {
+                    return _react2.default.createElement(
+                      'div',
+                      { key: index },
+                      _react2.default.createElement(_photo2.default, { image: image })
+                    );
+                  })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { 'class': 'modal-footer' },
+                _react2.default.createElement(
+                  'button',
+                  { type: 'button', 'class': 'btn btn-secondary', 'data-dismiss': 'modal' },
+                  'Close'
+                )
+              )
+            )
+          )
         )
       );
     }

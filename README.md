@@ -1,4 +1,4 @@
-# photo-gallery
+# Photo Gallery
 
 A clickable photo which produces a modal containing a photo carousel. 
 

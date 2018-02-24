@@ -20,10 +20,13 @@
     "express": "^4.16.2",
     "jest": "^22.3.0",
     "jquery": "^3.3.1",
+    "mongo": "^0.1.0",
+    "mongoose": "^5.0.7",
     "morgan": "^1.9.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-slick-carousel": "^0.14.9",
+    "request": "^2.83.0",
     "slick-carousel": "^1.8.1",
     "webpack": "^3.11.0"
   }

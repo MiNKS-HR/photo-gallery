@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
 const data = require('./seed-data.js');
 const request = require('request');
-const Images = require('./db/models.js');
-mongoose.connect('mongodb://localhost:3004');
+const Images = require('./db/model.js');
+mongoose.connect('mongodb://localhost:3004/images');
 
 var seedDb = function(data) {
-  // your code here!
-
   for (var i = 0; i < data.length; i++) {
     var saved = {
       id: data[i].id,
@@ -22,6 +20,7 @@ var seedDb = function(data) {
       }
     });
   }
+  mongoose.connection.close();
 };
 
 seedDb(data);

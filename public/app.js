@@ -596,6 +596,10 @@ var _photo = __webpack_require__(13);
 
 var _photo2 = _interopRequireDefault(_photo);
 
+var _description = __webpack_require__(14);
+
+var _description2 = _interopRequireDefault(_description);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -613,7 +617,7 @@ var Gallery = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Gallery.__proto__ || Object.getPrototypeOf(Gallery)).call(this));
 
     _this.state = {
-      images: ['https://robohash.org/perferendiscupiditateminima.png?size=300x400&set=set1', 'https://robohash.org/eosquisquia.bmp?size=300x400&set=set1', 'https://robohash.org/doloreofficiispraesentium.jpg?size=300x400&set=set1', 'https://robohash.org/voluptatibusidsaepe.png?size=300x400&set=set1', 'https://robohash.org/ullamcorruptivoluptatibus.png?size=300x400&set=set1', 'https://robohash.org/voluptatibusetprovident.jpg?size=300x400&set=set1', 'https://robohash.org/maioresnatussuscipit.jpg?size=300x400&set=set1']
+      images: []
     };
     _this.slider = _this.slider.bind(_this);
     _this.hasImages = _this.hasImages.bind(_this);
@@ -621,42 +625,40 @@ var Gallery = function (_React$Component) {
   }
 
   _createClass(Gallery, [{
-    key: 'slider',
-    value: function slider() {
-      $(document).ready(function () {
-        $('.selected').slick({
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          fade: true,
-          dots: false,
-          asNavFor: '.slider-nav'
-        });
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
 
-        $('.slider-nav').slick({
-          asNavFor: '.selected',
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          dots: true,
-          centerMode: true,
-          focusOnSelect: true,
-          variableWidth: true,
-          infinite: false
-        });
+      $.ajax({
+        url: '/images',
+        // contentType: 'application/json',
+        // dataType: 'json',
+        type: 'GET',
+        success: function success(data) {
+          _this2.setState({
+            images: data
+          });
+        },
+        error: function error(err) {
+          console.log('Gallery.jsx failure... ', err);
+        }
       });
     }
+  }, {
+    key: 'slider',
+    value: function slider() {}
   }, {
     key: 'hasImages',
     value: function hasImages(prop) {
       if (prop.length === 0) {
-        return _react2.default.createElement('img', { src: 'img/no-photo.jpg' });
+        return _react2.default.createElement('img', { src: 'img/no-photo.jpg', className: 'main-image' });
       } else if (prop.length === 1) {
-        return _react2.default.createElement('img', { src: prop[0] });
+        return _react2.default.createElement('img', { src: this.state[0].url, className: 'main-image' });
       } else {
         return _react2.default.createElement(
           'div',
           null,
-          _react2.default.createElement('img', { src: this.state.images[0], 'data-toggle': 'modal', 'data-target': '#photo_modal' }),
+          _react2.default.createElement('img', { src: this.state.images[0].url, 'data-toggle': 'modal', 'data-target': '#photo_modal', className: 'main-image' }),
           _react2.default.createElement(
             'p',
             { className: 'num-photos' },
@@ -687,7 +689,6 @@ var Gallery = function (_React$Component) {
                       return _react2.default.createElement(
                         'div',
                         { key: index },
-                        _react2.default.createElement(_photo2.default, { image: image }),
                         _react2.default.createElement(
                           'p',
                           null,
@@ -699,7 +700,9 @@ var Gallery = function (_React$Component) {
                           ),
                           ' out of ',
                           prop.length
-                        )
+                        ),
+                        _react2.default.createElement(_photo2.default, { image: image }),
+                        _react2.default.createElement(_description2.default, { description: image })
                       );
                     })
                   ),
@@ -746,6 +749,33 @@ var Gallery = function (_React$Component) {
 
 exports.default = Gallery;
 ;
+
+/* 
+  slider() {
+    $(document).ready(function(){
+      $('.selected').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      dots: false,
+      asNavFor: '.slider-nav'
+      });
+
+      $('.slider-nav').slick({
+      asNavFor: '.selected',
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      dots: true,
+      centerMode: true,
+      focusOnSelect: true,
+      variableWidth: true,
+      infinite: false
+      });
+    });
+  }
+
+*/
 
 /***/ }),
 /* 9 */
@@ -2266,7 +2296,7 @@ var Photo = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('img', { src: this.props.image })
+        _react2.default.createElement('img', { src: this.props.image.url })
       );
     }
   }]);
@@ -2275,6 +2305,61 @@ var Photo = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Photo;
+;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Description = function (_React$Component) {
+  _inherits(Description, _React$Component);
+
+  function Description(props) {
+    _classCallCheck(this, Description);
+
+    return _possibleConstructorReturn(this, (Description.__proto__ || Object.getPrototypeOf(Description)).call(this, props));
+  }
+
+  _createClass(Description, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "p",
+          { className: "description" },
+          this.props.description.description
+        )
+      );
+    }
+  }]);
+
+  return Description;
+}(_react2.default.Component);
+
+exports.default = Description;
 ;
 
 /***/ })

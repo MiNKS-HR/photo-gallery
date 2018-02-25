@@ -9,12 +9,12 @@
 }
 
 .selected img {
-    width: 30%;
+    width: 50%;
     margin: 0 auto;
 }
 
 .slider-nav .slick-list img {
-    width: 25%;
+    width: 10%;
     margin: 0 auto;
 }
 
@@ -25,4 +25,12 @@
 .num-photos {
   font-size: 0.8em;
   font-style: italic;
+}
+
+.main-image {
+  max-width: 300px;
+}
+
+.description {
+  font-size: 0.8em;
 }

@@ -8,7 +8,6 @@ export default class Photo extends React.Component {
   render(){
     return (
         <div>
-        {console.log('images!', this.props.image)}
         <img src={this.props.image} />
         </div>
     )

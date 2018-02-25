@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3004;
+
 const db = require('../db/model.js');
 mongoose.connect('mongodb://localhost/images');
 

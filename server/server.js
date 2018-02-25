@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3004;
+
 const db = require('../db/model.js');
 mongoose.connect('mongodb://localhost/images');
 
@@ -14,7 +15,14 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/images', function(req, res) {
-  console.log('REQS', req);
+  db.findAll((err, results) => {
+    if (err) {
+      console.log('story err', err);
+    } else {
+      // console.log('story success', results);
+      res.json(results);
+    }
+  });
 });
 
 app.listen(port, () => {

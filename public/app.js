@@ -2266,7 +2266,6 @@ var Photo = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        console.log('images!', this.props.image),
         _react2.default.createElement('img', { src: this.props.image })
       );
     }

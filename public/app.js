@@ -619,14 +619,13 @@ var Gallery = function (_React$Component) {
     _this.state = {
       images: []
     };
-    _this.slider = _this.slider.bind(_this);
     _this.hasImages = _this.hasImages.bind(_this);
     return _this;
   }
 
   _createClass(Gallery, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
       var _this2 = this;
 
       $.ajax({
@@ -644,9 +643,6 @@ var Gallery = function (_React$Component) {
         }
       });
     }
-  }, {
-    key: 'slider',
-    value: function slider() {}
   }, {
     key: 'hasImages',
     value: function hasImages(prop) {

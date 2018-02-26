@@ -9,11 +9,10 @@ export default class Gallery extends React.Component {
     this.state = {
       images: []
     };
-    this.slider = this.slider.bind(this);
     this.hasImages = this.hasImages.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     $.ajax({
       url: '/images',
       // contentType: 'application/json',
@@ -28,9 +27,6 @@ export default class Gallery extends React.Component {
         console.log('Gallery.jsx failure... ', err);
       }
     });
-  }
-
-  slider() {
   }
 
   hasImages(prop) {

@@ -14,7 +14,7 @@
 }
 
 .slider-nav .slick-list img {
-    width: 10%;
+    width: 50%;
     margin: 0 auto;
 }
 
@@ -33,4 +33,5 @@
 
 .description {
   font-size: 0.8em;
+  text-align: center;
 }

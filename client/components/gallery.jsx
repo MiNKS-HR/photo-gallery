@@ -5,7 +5,6 @@ import Description from './description.jsx';
 export default class Gallery extends React.Component {
   constructor() {
     super();
-
     this.state = {
       images: []
     };

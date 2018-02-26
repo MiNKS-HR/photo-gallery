@@ -48,20 +48,22 @@
       arrows: false,
       fade: true,
       dots: false,
+      centerMode: true,
       asNavFor: '.slider-nav'
       });
 
       $('.slider-nav').slick({
       asNavFor: '.selected',
-      slidesToShow: 3,
+      slidesToShow: 4,
       slidesToScroll: 1,
       dots: true,
-      centerMode: false,
+      // centerMode: false,
       focusOnSelect: true,
-      variableWidth: true,
-      infinite: false
+      // variableWidth: true,
+      infinite: true
       });
     });
+
     
     ReactDOM.render(
       React.createElement(Gallery),

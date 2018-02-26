@@ -17,7 +17,7 @@ const imageSchema = mongoose.Schema({
 const ImageModel = mongoose.model('Image', imageSchema); 
 
 function findAll(callback) {
-  ImageModel.find({}, callback);
+  ImageModel.find({}).sort('+id').exec(callback);
 }
 
 function insertOne(story, callback) {

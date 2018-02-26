@@ -27,6 +27,7 @@
     "morgan": "^1.9.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-responsive-carousel": "^3.1.33",
     "react-slick-carousel": "^0.14.9",
     "request": "^2.83.0",
     "slick-carousel": "^1.8.1",

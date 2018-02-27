@@ -46,7 +46,7 @@ From within the root directory:
 
 ```sh
 npm run build
-npm run
+npm start
 npm run test
 ```
 

@@ -1,15 +1,15 @@
-import React from 'react'
-import $ from 'jquery'
-import Photo from './photo.jsx'
-import Description from './description.jsx'
+import React from 'react';
+import $ from 'jquery';
+import Photo from './photo.jsx';
+import Description from './description.jsx';
 
 export default class Gallery extends React.Component {
   constructor () {
-    super()
+    super();
     this.state = {
       images: []
-    }
-    this.hasImages = this.hasImages.bind(this)
+    };
+    this.hasImages = this.hasImages.bind(this);
   }
 
   componentWillMount () {
@@ -21,19 +21,19 @@ export default class Gallery extends React.Component {
       success: (data) => {
         this.setState({
           images: data
-        })
+        });
       },
       error: (err) => {
-        console.log('Gallery.jsx failure... ', err)
+        console.log('Gallery.jsx failure... ', err);
       }
-    })
+    });
   }
 
   hasImages (prop) {
     if (prop.length === 0) {
-      return <img src="img/no-photo.jpg" alt="Not available" className="main" />
+      return (<img src="img/no-photo.jpg" alt="Not available" className="main" />);
     } else if (prop.length === 1) {
-      return <img src={this.state[0].url} alt="Main" className="main" />
+      return (<img src={this.state[0].url} alt="Main" className="main" />);
     } else {
       return (
         <div>
@@ -52,14 +52,14 @@ export default class Gallery extends React.Component {
                         <Photo image={image} />
                         <Description description={image} />
                       </div>
-                      )
+                      );
                     })
                     }
                   </div>
 
                   <div className="slider-nav">
                     {prop.map((image, index) => {
-                      return <div key={image.id}><Photo image={image} /></div>
+                      return (<div key={image.id}><Photo image={image} /></div>);
                     })
                     }
                   </div>
@@ -71,7 +71,7 @@ export default class Gallery extends React.Component {
             </div>
           </div>
         </div>
-      )
+      );
     }
   }
 
@@ -80,7 +80,7 @@ export default class Gallery extends React.Component {
       <div>
         {this.hasImages(this.state.images)}
       </div>
-    )
+    );
   }
 }
 

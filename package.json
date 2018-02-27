@@ -5,7 +5,6 @@
   "main": "bundle.js",
   "scripts": {
     "test": "jest",
-    "pomander": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
     "seed-database": "node seed.js",
     "build": "webpack --watch",
     "start": "nodemon ./server/server.js"

@@ -41,34 +41,33 @@
 
 
   <script>
-    $(document).ready(function(){
-      $('.selected').slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: false,
-      fade: true,
-      dots: false,
-      centerMode: true,
-      asNavFor: '.slider-nav'
-      });
+$(document).ready(() => {
+  $('.selected').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    dots: false,
+    centerMode: true,
+    asNavFor: '.slider-nav'
+  });
 
-      $('.slider-nav').slick({
-      asNavFor: '.selected',
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      dots: true,
-      // centerMode: false,
-      focusOnSelect: true,
-      // variableWidth: true,
-      infinite: true
-      });
-    });
+  $('.slider-nav').slick({
+    asNavFor: '.selected',
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: true,
+    // centerMode: false,
+    focusOnSelect: true,
+    // variableWidth: true,
+    infinite: true
+  });
+});
 
-    
-    ReactDOM.render(
-      React.createElement(Gallery),
-      document.getElementById('gallery')
-    );
+ReactDOM.render(
+  React.createElement(Gallery),
+  document.getElementById('gallery')
+);
   </script>
 
 </body>

@@ -1,7 +1,6 @@
 {
   "extends": ["airbnb-standard"],
   "rules": {
-    "semi": ["error", "never"],
     "import/extensions": ["js", "jsx"],
     "max-len": ["error", { "code": 999 }],
 

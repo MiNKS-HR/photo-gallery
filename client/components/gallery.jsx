@@ -12,6 +12,9 @@ export default class Gallery extends React.Component {
     this.hasImages = this.hasImages.bind(this);
   }
 
+  //make a function that gets images, containing AJAX call
+  //try using Fetch
+
   componentWillMount () {
     $.ajax({
       url: '/images',
@@ -33,11 +36,11 @@ export default class Gallery extends React.Component {
     if (prop.length === 0) {
       return (<img src="img/no-photo.jpg" alt="Not available" className="main" />);
     } else if (prop.length === 1) {
-      return (<img src={this.state[0].url} alt="Main" className="main" />);
+      return (<img src={prop[0].url} alt="Main" className="main" />);
     } else {
       return (
         <div>
-          <img src={this.state.images[0].url} alt="Main" data-toggle="modal" data-target="#mod" className="main" />
+          <img src={prop[0].url} alt="Main" data-toggle="modal" data-target="#mod" className="main" />
           <p className="num-photos">There are <strong>{prop.length}</strong> photos in this gallery.</p>
 
           <div className="modal fade" id="mod" tabIndex="-1" role="dialog" aria-hidden="true">

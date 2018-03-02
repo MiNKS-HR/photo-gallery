@@ -4,7 +4,7 @@
   "description": "",
   "main": "bundle.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "seed-database": "node seed.js",
     "build": "webpack --watch",
     "start": "nodemon ./server/server.js"
@@ -34,5 +34,12 @@
     "request": "^2.83.0",
     "slick-carousel": "^1.8.1",
     "webpack": "^3.11.0"
+  },
+  "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest-enzyme": "^4.2.0",
+    "mongodb-memory-server": "^1.7.0",
+    "supertest": "^3.0.0"
   }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import Photo from './photo.jsx';
 import Description from './description.jsx';
+import axios from 'axios';
 
 export default class Gallery extends React.Component {
   constructor () {
@@ -16,19 +17,24 @@ export default class Gallery extends React.Component {
   //try using Fetch
 
   componentWillMount () {
-    $.ajax({
-      url: '/images',
-      // contentType: 'application/json',
-      // dataType: 'json',
-      type: 'GET',
-      success: (data) => {
-        this.setState({
-          images: data
-        });
-      },
-      error: (err) => {
-        console.log('Gallery.jsx failure... ', err);
-      }
+    // $.ajax({
+    //   url: '/images',
+    //   // contentType: 'application/json',
+    //   // dataType: 'json',
+    //   type: 'GET',
+    //   success: (data) => {
+    //     this.setState({
+    //       images: data
+    //     });
+    //   },
+    //   error: (err) => {
+    //     console.log('Gallery.jsx failure... ', err);
+    //   }
+    // });
+
+
+    axios.get('/images').then(res => {
+      this.setState({images: res.data});
     });
   }
 

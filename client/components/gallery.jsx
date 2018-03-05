@@ -10,35 +10,25 @@ export default class Gallery extends React.Component {
     this.state = {
       images: []
     };
+
     this.hasImages = this.hasImages.bind(this);
+    this.getImages = this.getImages.bind(this);
   }
 
-  //make a function that gets images, containing AJAX call
-  //try using Fetch
-
-  componentWillMount () {
-    // $.ajax({
-    //   url: '/images',
-    //   // contentType: 'application/json',
-    //   // dataType: 'json',
-    //   type: 'GET',
-    //   success: (data) => {
-    //     this.setState({
-    //       images: data
-    //     });
-    //   },
-    //   error: (err) => {
-    //     console.log('Gallery.jsx failure... ', err);
-    //   }
-    // });
-
-
+  getImages () {
     axios.get('/images').then(res => {
       this.setState({images: res.data});
     });
   }
+  //make a function that gets images, containing AJAX call
+  //try using Fetch
+
+  componentWillMount () {
+
+  }
 
   hasImages (prop) {
+    {this.getImages()}
     if (prop.length === 0) {
       return (<img src="img/no-photo.jpg" alt="Not available" className="main" />);
     } else if (prop.length === 1) {

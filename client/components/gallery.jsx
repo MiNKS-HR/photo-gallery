@@ -59,8 +59,8 @@ export default class Gallery extends React.Component {
     } else {
       return (
         <div>
-          <div class="row">
-            <div class="col-sm-4">
+          <div className="row">
+            <div className="col-sm-4">
               <img src={prop[0].url} alt="Main" data-toggle="modal" data-target="#mod" className="main" />
               <p className="num-photos">There are <strong>{prop.length}</strong> photos in this gallery.</p>
             </div>

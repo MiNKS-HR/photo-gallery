@@ -3,6 +3,8 @@ import { shallow, mount, render, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import request from 'supertest';
 import Gallery from '../client/components/gallery';
+import renderer from 'react-test-renderer'; 
+
 
 configure({ adapter: new Adapter() });
 
@@ -40,3 +42,10 @@ describe('Gallery', () => {
 //mount
 
 //capitalized component file names
+
+// it('renders correctly', () => {
+//   const app = renderer
+//     .create(<Link page="http://localhost:3004">Home</Link>)
+//     .toJSON();
+//   expect(app).toMatchSnapshot();
+// });

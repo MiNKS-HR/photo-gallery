@@ -9,8 +9,8 @@
 }
 
 .selected img {
-    width: 50%;
-    margin: 0 auto;
+/*    width: 50%;
+*/    margin: 0 auto;
 }
 
 .slider-nav .slick-list img {
@@ -28,7 +28,7 @@
 }
 
 .main {
-  max-width: 300px;
+  width: 100%;
 }
 
 .description {

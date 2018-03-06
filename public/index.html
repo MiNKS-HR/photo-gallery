@@ -41,7 +41,8 @@
 
 
   <script>
-$(document).ready(() => {
+  setTimeout(function() {
+  console.log('I found Sl?ck slider');
   $('.selected').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -62,7 +63,31 @@ $(document).ready(() => {
     // variableWidth: true,
     infinite: true
   });
-});
+  },1);
+
+// $(document).ready(() => {
+  // console.log('I found Slick slider')
+  // $('.selected').slick({
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   arrows: false,
+  //   fade: true,
+  //   dots: false,
+  //   centerMode: true,
+  //   asNavFor: '.slider-nav'
+  // });
+
+  // $('.slider-nav').slick({
+  //   asNavFor: '.selected',
+  //   slidesToShow: 4,
+  //   slidesToScroll: 1,
+  //   dots: true,
+  //   // centerMode: false,
+  //   focusOnSelect: true,
+  //   // variableWidth: true,
+  //   infinite: true
+  // });
+// });
 
 ReactDOM.render(
   React.createElement(Gallery),

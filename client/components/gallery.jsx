@@ -16,19 +16,42 @@ export default class Gallery extends React.Component {
   }
 
   getImages () {
-    axios.get('/images').then(res => {
-      this.setState({images: res.data});
-    });
+  console.log('I found Sl!ck slider')
+  $('.selected').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    dots: false,
+    centerMode: true,
+    asNavFor: '.slider-nav'
+  });
+
+  $('.slider-nav').slick({
+    asNavFor: '.selected',
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: true,
+    // centerMode: false,
+    focusOnSelect: true,
+    // variableWidth: true,
+    infinite: true
+  });
+
   }
   //make a function that gets images, containing AJAX call
   //try using Fetch
 
   componentWillMount () {
-
+    axios.get('/images').then(res => {
+      this.setState({images: res.data});
+      console.log('state set');
+    });
+    // setTimeout(() => { this.getImages() }, 100);
   }
 
   hasImages (prop) {
-    {this.getImages()}
+
     if (prop.length === 0) {
       return (<img src="img/no-photo.jpg" alt="Not available" className="main" />);
     } else if (prop.length === 1) {
@@ -36,8 +59,13 @@ export default class Gallery extends React.Component {
     } else {
       return (
         <div>
-          <img src={prop[0].url} alt="Main" data-toggle="modal" data-target="#mod" className="main" />
-          <p className="num-photos">There are <strong>{prop.length}</strong> photos in this gallery.</p>
+          <div class="row">
+            <div class="col-sm-4">
+              <img src={prop[0].url} alt="Main" data-toggle="modal" data-target="#mod" className="main" />
+              <p className="num-photos">There are <strong>{prop.length}</strong> photos in this gallery.</p>
+            </div>
+          </div>
+
 
           <div className="modal fade" id="mod" tabIndex="-1" role="dialog" aria-hidden="true">
             <div className="modal-dialog" role="document">

@@ -32,6 +32,7 @@
     "react-dom": "^16.2.0",
     "react-responsive-carousel": "^3.1.33",
     "react-slick-carousel": "^0.14.9",
+    "react-test-renderer": "^16.2.0",
     "request": "^2.83.0",
     "slick-carousel": "^1.8.1",
     "webpack": "^3.11.0"

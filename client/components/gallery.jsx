@@ -67,7 +67,7 @@ export default class Gallery extends React.Component {
           </div>
 
 
-          <div className="modal fade" id="mod" tabIndex="-1" role="dialog" aria-hidden="true">
+          <div className="modal fade" id="mod" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
             <div className="modal-dialog" role="document">
               <div className="modal-content">
                 <div className="modal-body">
@@ -110,29 +110,3 @@ export default class Gallery extends React.Component {
     );
   }
 }
-
-/*
-  slider() {
-    $(document).ready(function(){
-      $('.selected').slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: false,
-      fade: true,
-      dots: false,
-      asNavFor: '.slider-nav'
-      });
-
-      $('.slider-nav').slick({
-      asNavFor: '.selected',
-      slidesToShow: 3,
-      slidesToScroll: 3,
-      dots: true,
-      centerMode: true,
-      focusOnSelect: true,
-      variableWidth: true,
-      infinite: false
-      });
-    });
-  }
-*/

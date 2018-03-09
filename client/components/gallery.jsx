@@ -67,7 +67,7 @@ export default class Gallery extends React.Component {
           </div>
 
 
-          <div className="modal fade" id="mod" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+          <div className="modal fade" id="mod" tabIndex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
             <div className="modal-dialog" role="document">
               <div className="modal-content">
                 <div className="modal-body">

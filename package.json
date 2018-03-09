@@ -7,7 +7,7 @@
     "test": "jest --watch",
     "seed-database": "node seed.js",
     "build": "webpack --watch",
-    "start": "nodemon ./server/server.js"
+    "start": "node seed.js && nodemon ./server/server.js"
   },
   "keywords": [],
   "author": "",

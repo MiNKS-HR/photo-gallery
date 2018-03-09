@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/images');
+//mongoose.connect('mongodb://localhost/images');
+// mongoose.connect('mongodb://localhost/images');
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -25,5 +26,11 @@ function insertOne (story, callback) {
   ImageModel.create(story, callback);
 }
 
+const insertMany = (image, callback) => {
+  ImageModel.insertMany(image, callback);
+}
+
 exports.findAll = findAll;
 exports.insertOne = insertOne;
+exports.insertMany = insertMany;
+exports.imageSchema = imageSchema;

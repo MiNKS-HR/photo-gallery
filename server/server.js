@@ -21,7 +21,7 @@ app.get('/images', (req, res) => {
     if (err) {
       console.log('story err', err);
     } else {
-      // console.log('story success', results)
+      // console.log('this sucks...', results)
       res.json(results);
     }
   });

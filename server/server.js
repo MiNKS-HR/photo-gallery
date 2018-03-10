@@ -6,10 +6,11 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const port = process.env.PORT || 3004;
+const DB_ADDRESS = process.env.DB_ADDRESS || localhost;
 
 const db = require('../db/model.js');
 
-mongoose.connect('mongodb://localhost/images');
+mongoose.connect(`mongodb://${DB_ADDRESS}/images`);
 
 app.use(bodyParser.json());
 

@@ -1,8 +1,4 @@
 const mongoose = require('mongoose');
-
-//mongoose.connect('mongodb://localhost/images');
-// mongoose.connect('mongodb://localhost/images');
-
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
